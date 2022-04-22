@@ -3,7 +3,7 @@ import { connection as knex } from "../database/connection";
 
 export default class ProductsController {
   async create(request: Request, response: Response) {
-    const { title, author, content, categories_id } = request.body;
+    const { name, price, amount, shelf_life, categories_id } = request.body;
 
     const trx = await knex.transaction();
 
@@ -11,7 +11,7 @@ export default class ProductsController {
       throw new Error("Id inválido/não encontrado");
 
     const newProduct = await trx("products")
-      .insert({ author, categories_id, content, title })
+      .insert({ name, price, amount, shelf_life, categories_id })
       .returning("*");
 
     await trx.commit();
