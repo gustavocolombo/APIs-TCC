@@ -9,16 +9,12 @@ productsRoutes.post("/create", async (req, res) => {
 
   let findCategory;
 
-  console.log(category);
-
   await Category.findOne({ name: category })
     .lean()
     .then((result) => {
       findCategory = result;
-      console.log("foi?", findCategory);
     })
     .catch((err) => {
-      console.log("deu erro");
       return res.json({ error: err.message });
     });
 

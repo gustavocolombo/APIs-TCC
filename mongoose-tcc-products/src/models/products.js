@@ -18,11 +18,11 @@ const productsSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    category:{
+    category: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'categories',
-      required: true
-    }
+      ref: "categories",
+      required: true,
+    },
   },
   { timestamps: true }
 );
