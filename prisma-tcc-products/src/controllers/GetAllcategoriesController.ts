@@ -6,9 +6,11 @@ export default class GetAllCategoriesController {
 
     const service = new GetAllCategoriesService();
 
+    console.time('findPrisma')
+
     const getAll = await service.execute();
 
-    console.log('get all', getAll)
+    console.timeEnd('findPrisma')
 
     return response.json(getAll);
   }

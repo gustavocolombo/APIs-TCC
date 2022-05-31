@@ -7,7 +7,11 @@ export default class CreateCategoryController {
 
     const service = new CreateCategoryService();
 
+    console.time('prismaCreate')
+
     const category = await service.execute({ name });
+
+    console.timeEnd('prismaCreate')
 
     return response.json(category);
   }
