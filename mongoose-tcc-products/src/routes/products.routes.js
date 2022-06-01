@@ -37,13 +37,19 @@ productsRoutes.post("/create", async (req, res) => {
 });
 
 productsRoutes.get("/get-all", async (req, res) => {
+
+  console.time('mongoFind')
+  
   await Products.find()
     .then((result) => {
       return res.json(result);
     })
-    .then((err) => {
+    .catch((err) => {
       return res.json({ error: err.message });
     });
+
+    console.timeEnd('mongoFind')
+
 });
 
 module.exports = productsRoutes;
