@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-export const connection = async (): Promise<void> => {
+export const connection = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL);
+    mongoose.connect(String(process.env.MONGO_URL));
     console.log("Database connected");
   } catch (err) {
     console.log("Error in connection", err);
